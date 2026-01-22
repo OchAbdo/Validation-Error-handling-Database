@@ -3,6 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { HorseModule } from './horse/horse.module';
 
 @Module({
   imports: [ConfigModule.forRoot({ isGlobal: true }),
@@ -18,9 +19,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       database: configService.get<string>('DATABASENAME'),
       autoLoadEntities: true,
       synchronize: true,
-
+      
     })
-  })
+  }),
+  HorseModule
   ],
   controllers: [AppController],
   providers: [AppService],
