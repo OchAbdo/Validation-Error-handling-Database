@@ -20,12 +20,19 @@ export class HorseService {
         return this.repo.find({where : {name}})
     }
 
+    findall (){
+        return this.repo.find() 
+    }
+
     async update(id : number , uphorse : Partial<Horse>){
         const horse = await this.findOne(id)
         if(!horse){
             throw new NotFoundException(`the horse with id ${id} not found !`)
         }
         Object.assign(horse , uphorse)
+        console.log(horse);
+        console.log(uphorse);
+        
         return this.repo.save(horse)
     }
 
