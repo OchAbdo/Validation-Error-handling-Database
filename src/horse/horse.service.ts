@@ -30,8 +30,6 @@ export class HorseService {
             throw new NotFoundException(`the horse with id ${id} not found !`)
         }
         Object.assign(horse , uphorse)
-        console.log(horse);
-        console.log(uphorse);
         
         return this.repo.save(horse)
     }
